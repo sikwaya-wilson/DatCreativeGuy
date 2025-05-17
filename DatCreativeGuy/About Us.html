@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us Page</title>
+
+  <!-- Fonts from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      color: #1a1a1a;
+      line-height: 1.6;
+      background-color: #eae9ee;
+    }
+
+    a {
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      opacity: 0.7;
+    }
+
+    .upper-banner {
+      position: relative;
+      width: 100%;
+      height: 6px;
+    }
+
+    .banner-background {
+      background-color: #ffffff;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      width: 33.33%;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #00a9a5;
+      clip-path: polygon(5px 0%, 100% 0%, calc(100% - 5px) 100%, 0% 100%);
+      z-index: 2;
+    }
+
+    .top-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      background: #2f383f;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .social-links a {
+      margin-left: 10px;
+      display: inline-block;
+    }
+
+    .social-links img {
+      height: 20px;
+      width: 20px;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-links a:hover img {
+      filter: brightness(0) invert(38%) sepia(77%) saturate(370%) hue-rotate(137deg) brightness(94%) contrast(90%);
+      transform: scale(1.1);
+    }
+
+    header {
+      background: white;
+      color: #2f383f;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .email-bar {
+      font-size: 14px;
+      margin-left: 185px;
+      color: #00a9a5;
+    }
+
+    .email-bar i {
+      margin-right: 8px;
+    }
+
+    header nav {
+      display: flex;
+      gap: 35px;
+      margin-right: 120px;
+      align-items: center;
+    }
+
+    header nav a {
+      color: #2f383f;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    header nav a.active {
+      color: #008f8c;
+    }
+
+    header nav i {
+      font-size: 16px;
+    }
+
+    header nav i:hover {
+      color: #00a9a5;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 35px;
+      max-width: 1200px;
+      margin: auto;
+      gap: 32px;
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image .placeholder {
+      width: 300px;
+      height: 300px;
+      background: #eee;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-text {
+      flex: 1 1 300px;
+      padding: 16px;
+    }
+
+    .hero-text h1 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .hero-text p {
+      margin-bottom: 16px;
+    }
+
+    .hero-text .cta {
+      background-color: #00a9a5;
+      color: white;
+      padding: 4px 16px;
+      border-radius: 50px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-text .cta:hover {
+      background-color: white;
+      color: #00a9a5;
+      transform: scale(1.05);
+    }
+
+    .partners {
+      background: #f9f9f9;
+      padding: 32px 16px;
+      text-align: center;
+    }
+
+    .partners h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      font-weight: 700;
+      color: #2f383f;
+    }
+
+    .logo-strip-container {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    .logo-strip {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .logo-track {
+      display: flex;
+      animation: scrollLoop 40s linear infinite;
+    }
+
+    .logo-track img {
+      max-width: 200px;
+      max-height: 80px;
+      margin: 0 16px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-track img:hover {
+      transform: scale(1.2);
+    }
+
+    .logo-strip:hover .logo-track,
+    .logo-strip:focus-within .logo-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollLoop {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    footer {
+      background: #2f383f;
+      color: white;
+      padding: 32px 16px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .top-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+      }
+
+      .hero {
+        flex-direction: column;
+        padding: 16px;
+        gap: 16px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header nav {
+        gap: 20px;
+        margin-right: 0;
+      }
+
+      .email-bar {
+        margin-left: 0;
+        margin-bottom: 16px;
+      }
+
+      .logo img {
+        height: 35px;
+      }
+
+      .partners {
+        padding: 16px;
+      }
+
+      .logo-track {
+        animation-duration: 25s;
+      }
+
+      .logo-track img {
+        max-width: 140px;
+        max-height: 60px;
+        margin: 0 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-text h1 {
+        font-size: 20px;
+      }
+
+      .hero-text p {
+        font-size: 14px;
+      }
+
+      .cta {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+
+      header nav {
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="upper-banner">
+    <div class="banner-background"></div>
+    <div class="banner-overlay"></div>
+  </section>
+
+  <div class="top-section">
+    <div class="logo">
+      <img src="images/logo.webp" alt="DatCreativeGuy Logo">
+    </div>
+    <div class="social-links">
+      <a href="https://www.youtube.com/@VuAcUg"><img src="logos/youtube.svg" alt="YouTube"></a>
+      <a href="https://ug.linkedin.com/company/victoria-university-uganda"><img src="logos/linkedin.svg" alt="LinkedIn"></a>
+      <a href="https://x.com/VUKampala"><img src="logos/twitter.svg" alt="Twitter"></a>
+      <a href="https://www.instagram.com/victoriauniversity_kampala/?hl=en"><img src="logos/instagram.svg" alt="Instagram"></a>
+      <a href="https://www.facebook.com/VUKampala/"><img src="logos/facebook.svg" alt="Facebook"></a>
+    </div>
+  </div>
+
+  <header>
+    <div class="email-bar">
+      <i class="fas fa-envelope"></i> <strong>bookings@datcreativeguy.com</strong>
+    </div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="About Us.html" class="active">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+      <a href="#"><i class="fas fa-search"></i></a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-image">
+          <img src="images/about-hero.jpeg" alt="Creative Studio Image" style="width: 300px; height: 300px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); object-fit: cover;">
+    </div>
+
+
+    <div class="hero-text">
+      <h1>Hey! Welcome, and thank you for visiting <span style="color:#00a9a5;">DatCreativeGuy!</span></h1>
+      <p>Inspired by your stories and visions for the future, we craft captivating, timeless and bold visual identities.</p>
+      <p>We dismiss conventional rigid agency work cultures and embrace everyone we work with like old friends.</p>
+      <p><strong>Book an appointment and let's make something amazing!</strong></p>
+      <a href="contact.html" class="cta">Book Us</a>
+    </div>
+  </section>
+
+  <section class="partners">
+    <h2>Partners in Crime</h2>
+    <div class="logo-strip-container">
+      <div class="logo-strip">
+        <div class="logo-track">
+          <!-- Partner logos -->
+          <img src="logos/ajp.png" alt="ajp">
+          <img src="logos/Alaia.png" alt="Alaia">
+          <img src="logos/Egg-man.png" alt="Egg-man">
+          <img src="logos/Gona.png" alt="Gona">
+          <img src="logos/JESA.png" alt="JESA">
+          <img src="logos/Lavender-Blinds.png" alt="Lavender Blinds">
+          <img src="logos/Maestro.png" alt="Maestro">
+          <img src="logos/Mpaatanel-Tours-Travels.png" alt="Mpaatanel">
+          <img src="logos/MTN.png" alt="MTN">
+          <img src="logos/Nina-Interiors.png" alt="Nina Interiors">
+          <!-- Repeat for scrolling -->
+          <img src="logos/ajp.png" alt="ajp">
+          <img src="logos/Alaia.png" alt="Alaia">
+          <img src="logos/Egg-man.png" alt="Egg-man">
+          <img src="logos/Gona.png" alt="Gona">
+          <img src="logos/JESA.png" alt="JESA">
+          <img src="logos/Lavender-Blinds.png" alt="Lavender Blinds">
+          <img src="logos/Maestro.png" alt="Maestro">
+          <img src="logos/Mpaatanel-Tours-Travels.png" alt="Mpaatanel">
+          <img src="logos/MTN.png" alt="MTN">
+          <img src="logos/Nina-Interiors.png" alt="Nina Interiors">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 DatCreativeGuy. All rights reserved.</p>
+    <p>Services | Portfolio | Contacts</p>
+  </footer>
+
+</body>
+</html>

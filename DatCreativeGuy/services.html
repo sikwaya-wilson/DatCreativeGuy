@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Services - DatCreativeGuy</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --primary: #00a9a5;
+      --dark: #2f383f;
+      --text-dark: #1a1a1a;
+      --light-bg: #eae9ee;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    a:hover {
+      opacity: 0.7;
+    }
+
+    .upper-banner {
+      height: 6px;
+      position: relative;
+      width: 100%;
+    }
+
+    .banner-background {
+      background: var(--white);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      width: 33.33%;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--primary);
+      clip-path: polygon(5px 0%, 100% 0%, calc(100% - 5px) 100%, 0% 100%);
+      z-index: 2;
+    }
+
+    .top-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      background: var(--dark);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .social-links a {
+      margin-left: 10px;
+      display: inline-block;
+    }
+
+    .social-links img {
+      height: 20px;
+      width: 20px;
+      filter: brightness(0) invert(1);
+      transition: 0.3s ease;
+    }
+
+    .social-links a:hover img {
+      filter: brightness(0) invert(38%) sepia(77%) saturate(370%) hue-rotate(137deg) brightness(94%) contrast(90%);
+      transform: scale(1.1);
+    }
+
+    header {
+      background: var(--white);
+      color: var(--dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 5%;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      flex-wrap: wrap;
+    }
+
+    .email-bar {
+      font-size: 14px;
+      color: var(--primary);
+    }
+
+    .email-bar i {
+      margin-right: 8px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--dark);
+      font-weight: bold;
+    }
+
+    nav a.active {
+      color: var(--primary);
+    }
+
+    .services-container,
+    .lower-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      padding: 40px 5%;
+    }
+
+    .lower-row {
+      background-color: var(--white);
+      border-radius: 12px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .footer {
+      background: var(--primary);
+      color: var(--white);
+      padding: 1.2rem;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      flex-grow: 1;
+    }
+
+    .footer strong {
+      font-size: 1.2rem;
+    }
+
+    .footer small {
+      font-size: 0.9rem;
+      display: block;
+    }
+
+    .footer button {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 25px;
+      background: var(--white);
+      color: var(--primary);
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .footer button:hover {
+      background-color: var(--dark);
+      color: var(--white);
+    }
+
+    .hover-info {
+      display: none;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: var(--dark);
+      font-size: 0.85rem;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .learn-more-btn:hover + .hover-info {
+      display: block;
+    }
+
+    footer {
+      background: #2b2d33;
+      color: var(--white);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--white);
+      margin: 0 5px;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 992px) {
+      .service-card {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .service-card {
+        width: 100%;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .top-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .email-bar {
+        margin: 0 0 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner -->
+  <section class="upper-banner">
+    <div class="banner-background"></div>
+    <div class="banner-overlay"></div>
+  </section>
+
+  <!-- Top Section -->
+  <div class="top-section">
+    <div class="logo">
+      <img src="images/logo.webp" alt="DatCreativeGuy Logo">
+    </div>
+    <div class="social-links">
+      <a href="https://www.youtube.com/@VuAcUg"><img src="logos/youtube.svg" alt="YouTube"></a>
+      <a href="https://ug.linkedin.com/company/victoria-university-uganda"><img src="logos/linkedin.svg" alt="LinkedIn"></a>
+      <a href="https://x.com/VUKampala"><img src="logos/twitter.svg" alt="Twitter"></a>
+      <a href="https://www.instagram.com/victoriauniversity_kampala/?hl=en"><img src="logos/instagram.svg" alt="Instagram"></a>
+      <a href="https://www.facebook.com/VUKampala/"><img src="logos/facebook.svg" alt="Facebook"></a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="email-bar">
+      <i class="fas fa-envelope"></i> <strong>bookings@datcreativeguy.com</strong>
+    </div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="About Us.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+      <a href="#"><i class="fas fa-search"></i></a>
+    </nav>
+  </header>
+
+  <!-- Services Top -->
+  <section class="services-container">
+    <div class="service-card">
+      <img src="images/Animation.jpg" alt="3D Animation">
+      <div class="footer">
+        <strong>3D Animation</strong>
+        <small>We bring your ideas to life frame by frame.</small>
+        <button class="learn-more-btn">Learn More</button>
+        <div class="hover-info">Whether it’s explainer videos or animated branding, our animations transform static concepts into compelling visual stories.</div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="images/MotionGraphics.jpg" alt="Motion Graphics">
+      <div class="footer">
+        <strong>Motion Graphics</strong>
+        <small>Let your brand's story move.</small>
+        <button class="learn-more-btn">Learn More</button>
+        <div class="hover-info">We blend design, motion, and sound to create sleek motion graphics that communicate and impress.</div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="images/Still.jpg" alt="Still Graphics">
+      <div class="footer">
+        <strong>Still Graphics</strong>
+        <small>Designs that captivate without motion.</small>
+        <button class="learn-more-btn">Learn More</button>
+        <div class="hover-info">Eye-catching visuals for ads, social content, and brand messaging that don’t rely on animation to make impact.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Bottom -->
+  <section class="lower-row">
+    <div class="service-card">
+      <img src="images/Cinematography.jpg" alt="Cinematography">
+      <div class="footer">
+        <strong>Cinematography</strong>
+        <small>Lights. Camera. Magic.</small>
+        <button class="learn-more-btn">Learn More</button>
+        <div class="hover-info">Craft cinematic visuals with professional lighting and narrative editing that elevate your brand story.</div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="images/Photography.jpg" alt="Photography">
+      <div class="footer">
+        <strong>Photography</strong>
+        <small>Every shot tells a story.</small>
+        <button class="learn-more-btn">Learn More</button>
+        <div class="hover-info">From product shoots to portraits, we deliver sharp, soulful photography that captures your brand essence.</div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="images/Branding.jpg" alt="Branding & Marketing">
+      <div class="footer">
+        <strong>Branding & Marketing</strong>
+        <small>Your brand. Reinvented.</small>
+        <button class="learn-more-btn">Learn More</button>
+        <div class="hover-info">Build a compelling identity and marketing strategy—from logos to full campaigns, we’ve got your growth in mind.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 DatCreativeGuy. All rights reserved.</p>
+    <p><a href="services.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="contact.html">Contacts</a></p>
+  </footer>
+</body>
+</html>
